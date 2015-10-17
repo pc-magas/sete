@@ -19,9 +19,9 @@ function IndexViewmodel()
 	self.searchTerm=ko.observable();
 	self.offers=ko.observableArray();
 	
-	self.searchTerm.subscribe(function(data)
+	self.searchAction=function(data)
 	{
-		get_offers(data,null,
+		get_offers(self.searchTerm(),null,
 		function(data)
 		{
 			var offers=[];
@@ -37,7 +37,7 @@ function IndexViewmodel()
 		{
 			
 		});
-	});
+	};
 }
 
 $(document).ready(function()

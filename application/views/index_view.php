@@ -12,7 +12,7 @@ $this->load->view('page_header.php');
 </div>
 <div style=" width:500px; margin:auto; margin-top:30px;" >
 	<input data-bind="value:searchTerm,valueUpdate:'keyup'" placeholder="What do you want to do?" type="text" style="height:35px; outline:none; padding: 0px 0px 0px 10px; width:400px;"  />
-	<button style="height:35px; width:80px; outline:none; margin-left:10px; background:#fff; border:none; cursor:pointer;" >Search</button>
+	<button style="height:35px; width:80px; outline:none; margin-left:10px; background:#fff; border:none; cursor:pointer;" data-bind="click:searchAction" >Search</button>
 </div>
 <!-- Search Form -->
 
