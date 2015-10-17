@@ -83,7 +83,6 @@ function IndexViewmodel()
 $(document).ready(function()
 {
 	var indexVm=new IndexViewmodel();
-
 	ko.applyBindings(indexVm);
 });
 </script>
@@ -105,7 +104,7 @@ $(document).ready(function()
 							<button style="height:35px; width:80px; outline:none; marginleft:10px; background:#fff; border:none; cursor:pointer;" >Search</button>
 					</form>
 					<ul databind="foreach:offers">
-						<li data-bind="click:$parent."><span data-bind="text:name"></span></li>
+						<li><a data-bind="click:$parent.setSearchTerm"><span data-bind="text:name"></span></a></li>
 					</ul>
 					<?php //}else { ?>
 						<div style="width:1100px; height:1100px; margin:auto; background:#fff; position:relative;" >
