@@ -1,12 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->helper('url');
+
+$this->load->view('page_heade.php');
 ?>
 
+<div style="width:1100px; margin:auto; height:600px;" >
 
-				<div style="width:1100px; margin:auto; height:600px;" >
-
-					<?php if(!isset($_GET['s'])){  ?>
-							<div style="margin:auto; width:260px; margin-top:10%;" >
+<?php if(!isset($_GET['s']))
+{  ?>
+		<div style="margin:auto; width:260px; margin-top:10%;" >
 					<a href="index.php" ><img src="logo.png" /></a>
 
 								</div>
@@ -89,8 +91,6 @@ $this->load->helper('url');
 				</div>
 
 
-</body>
-
-
-
-</html>
+<?php
+$this->load->footer('page_footer.php');
+?>

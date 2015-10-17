@@ -1,14 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->helper('url');
+
+$this->load->view('page_header.php')
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<metaa charset="UTF-8"/>
-	<title>Dream Planner</title>
-	<script src="<?=base_url('assets/js/')?>"></script>
-</head>
-<body style="background:url('back.jpg') repeat;" >
+
 	<div style="width:800px; background:#fff; position:relative; margin:auto; height:1700px;" >
 	<h2 style="text-align:center;" >Offer Title</h2>
 	<div style="width:100%; height:200px;" >
@@ -114,6 +109,7 @@ $this->load->helper('url');
 
 				<button style="width:300px; height:40px;" >Κράτηση</button>
 	</div>
-</body>
 
-</html>
+<?php
+	$this->load->view('page_footer');
+?>
