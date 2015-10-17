@@ -112,12 +112,14 @@ $(document).ready(function()
 							<input name="s" data-bind="value:searchTerm,valueUpdate:'keyup'" placeholder="What do you want to do?" type="text" style="height:35px; outline:none; padding: 0px 0px 0px 10px; width:400px;"  />
 							<button style="height:35px; width:80px; outline:none; marginleft:10px; background:#fff; border:none; cursor:pointer;" >Search</button>
 					</form>
-					<ul databind="foreach:offers">
-						<li><!--<a data-bind="click:clickAction">--><span data-bind="text:name"></span><!--</a>--></li>
+					<ul data-bind="foreach:offers">
+						<li>
+							<a data-bind="click:clickAction"><span data-bind="text:order_name"></span></a>
+						</li>
 					</ul>
 					<?php //}else { ?>
-						<div style="width:1100px; height:1100px; margin:auto; background:#fff; position:relative;" >
-						<h3 style="textalign:center;" >Αποτελέσματα: </h3>
+					<!--	<div style="width:1100px; height:1100px; margin:auto; background:#fff; position:relative;" > -->
+					<!--	<h3 style="textalign:center;" >Αποτελέσματα: </h3>
 
 						<div style="width:530px; position:relative; margin:auto; " >
 <?php //if(isset($_GET['s'])){ $name=$_GET['s']; $query = mysql_query("SELECT name, description, business_id, price, id FROM `offers` WHERE name='$name' ");
@@ -146,11 +148,9 @@ $(document).ready(function()
  						</div>
  							</div>
 					<?php //} ?>
-				</div>
+				</div>-->
 
 
 </body>
-
-
 
 </html>
