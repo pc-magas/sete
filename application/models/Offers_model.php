@@ -11,12 +11,12 @@ class Offers_model extends CI_Model
 	public function get($keyword,$price=null)
 	{
 		$this->db->select('`Offers`.`id`,
-						   `Offers`.`name`,
-						   `Business`.`name`,
+						   `Offers`.`name` as `offer_name` ,
+						   `Business`.`name` as  `business_name`,
 						   `Offers`.`price`,
 						   `Offers`.`description`,
-						   `Places`.`id`,
-						   `Places`.`name`,
+						   `Places`.`id` as `place_id`,
+						   `Places`.`name` as `place_name`,
 						   `Business`.`long`,
 						   `Business`.`lat`' )
 				 ->from('`Offers`')
