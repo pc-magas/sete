@@ -10,6 +10,8 @@ class Offers_model extends CI_Model
 	
 	public function get($keyword,$price=null)
 	{
+		if(empty($keyword)) return array();
+		
 		$this->db->select('`Offers`.`id`,
 						   `Offers`.`name` as `offer_name` ,
 						   `Business`.`name` as  `business_name`,

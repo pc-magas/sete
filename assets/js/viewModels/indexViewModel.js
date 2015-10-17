@@ -2,12 +2,12 @@
 function Offer(data)
 {
 	var self=this;
-	self.order_name=ko.observable(data.offer_name);
+	self.offer_name=ko.observable(data.offer_name);
 	self.business=ko.observable(data.business_name);
 	self.price=ko.observable(data.price);
 	self.description=ko.observable(data.description);
 	self.place_id=ko.observable(parseInt(data.place_id));
-	self.place_name=ko.observable(parseInt(data.place_name));
+	self.place_name=ko.observable(data.place_name);
 	self.g_long=ko.observable(data['long']);
 	self.g_lat=ko.observable(data['lat']);
 };

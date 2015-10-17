@@ -22,12 +22,12 @@ $this->load->view('page_header.php');
 		<!--  ko foreach: offers-->
 		<div style="width:530px; position:relative; margin:auto; " >
 			<div style="width:530px; box-shadow: 0px 0px 0px 1px #000; border-radius:2px; margin-top:10px; margin-bottom:10px; height:220px; float:left; background:#fff;" >
-				<h2 style="padding: 10px 0px 0px 10px;" ><span data-bind="text:offers"></span></h2>
+				<h2 style="padding: 10px 0px 0px 10px;" ><span data-bind="text:offer_name"></span></h2>
 				<div style="width:400px; float:left; position:relative; height:130px;" >
 					<img src="" style="width:130px; margin-left:10px; height:130px; float:left;" />
 					<div style="position:relative; float:left; position:relative;" >
 						<p style="margin-left:10px;">Περιοχή: <span data-bind="text:place_name"></span></p>
-						<p style="margin-left:10px;">Περιγραφή:<br>
+						<p style="margin-left:10px;">
 							<div data-bind="text:description"></div> 
 						</p>
 					</div>
