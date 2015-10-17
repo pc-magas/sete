@@ -1,22 +1,23 @@
 <?php
 //include('db.php');
 ?>
+<!DOCTYPE html>
 <html>
 
 <head>
 	<meta charset="UTF8">
 	<title>Dream Planner</title>
-<script src="//code.jquery.com/jquery1.11.3.min.js"></script>
-<script stc="http://knockoutjs.com/downloads/knockout3.3.0.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="./knockout-3.3.0.js"></script>
 <script>
 
-var url="../backend/index.php/offers/get";
+var url="./backend/index.php/offers/get/json";
 
 var get_offers=function(keyword,price,success_cb,error_cb,alwayscb)
 {
-	var postdata={'keyword':keyword};
+	var postdata={'s':keyword};
 
-	if(typeof price !=='undeifned' ) postdata['price'];
+	if(typeof price !=='undefined' ) postdata['price'];
 	$.get(url,postdata)
 	.done(function(data)
 	{
@@ -34,7 +35,7 @@ var get_offers=function(keyword,price,success_cb,error_cb,alwayscb)
 	});
 };
 
-function Offer(data)
+function Offer(data,clickCB)
 {
 	var self=this;
 	self.order_name=ko.observable(data.offer_name);
@@ -45,7 +46,14 @@ function Offer(data)
 	self.place_name=ko.observable(parseInt(data.place_name));
 	self.g_long=ko.observable(data['long']);
 	self.g_lat=ko.observable(data['lat']);
+
+	self.clickAction=function(self)
+	{
+		if(typeof clickCB === 'function') clickCB(self);
+	}
+
 };
+
 
 function IndexViewmodel()
 {
@@ -56,13 +64,17 @@ function IndexViewmodel()
 
 	self.searchTerm.subscribe(function(data)
 	{
+		console.log("Changed")
 		get_offers(data,null,
 		function(data)
 		{
 			var offers=[];
 			ko.utils.arrayForEach(data,function(d)
 			{
-				var last_offer=new Offer(d);
+				var last_offer=new Offer(d,function(offer)
+				{
+					self.searchTerm(offer.order_name());
+				});
 				offers.push(last_offer);
 			});
 			self.offers(offers);
@@ -74,10 +86,7 @@ function IndexViewmodel()
 		});
 	});
 
-	self.setSearchTerm=function(data)
-	{
-		self.searchTerm(data.order_name());
-	};
+
 }
 
 $(document).ready(function()
@@ -100,11 +109,11 @@ $(document).ready(function()
 
 								</div>
 							<form method="GET" action="index.php" style=" width:500px; margin:auto; margintop:30px;" >
-							<input name="s" databind="value:offers,valueUpdate:'keyup'" placeholder="What do you want to do?" type="text" style="height:35px; outline:none; padding: 0px 0px 0px 10px; width:400px;"  />
+							<input name="s" data-bind="value:searchTerm,valueUpdate:'keyup'" placeholder="What do you want to do?" type="text" style="height:35px; outline:none; padding: 0px 0px 0px 10px; width:400px;"  />
 							<button style="height:35px; width:80px; outline:none; marginleft:10px; background:#fff; border:none; cursor:pointer;" >Search</button>
 					</form>
 					<ul databind="foreach:offers">
-						<li><a data-bind="click:$parent.setSearchTerm"><span data-bind="text:name"></span></a></li>
+						<li><!--<a data-bind="click:clickAction">--><span data-bind="text:name"></span><!--</a>--></li>
 					</ul>
 					<?php //}else { ?>
 						<div style="width:1100px; height:1100px; margin:auto; background:#fff; position:relative;" >

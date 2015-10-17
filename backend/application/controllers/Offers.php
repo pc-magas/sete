@@ -7,15 +7,16 @@ class Offers extends CI_Controller
 		parent::__construct();
 		$this->load->model('Offers_model','offers');
 	}
-	
-	public function get()
+
+	public function get($view='json')
 	{
 		$keyword=$this->input->get('s');
 		$price=$this->input->get('price');
-		
+
 		$ret=$this->offers->get($keyword,$price);
 
-		$this->load->view('offers_view.php',array('data'=>$ret));
+		if($view==='json') $this->load->view('json_view.php',array('data'=>$ret));
+		else $this->load->view('offers_page.php',array('data'=>$ret));
 	}
-	
+
 }
