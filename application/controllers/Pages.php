@@ -16,6 +16,8 @@ class Pages extends CI_Controller
 	{
 		$this->load->view('offers_page.php');
 	}
+	
+	
 }
 
 ?>

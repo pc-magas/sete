@@ -8,9 +8,9 @@ class Offers_model extends CI_Model
 		$this->load->database();
 	}
 	
-	public function get($keyword,$price=null)
+	public function get($keyword=null,$id=null,$price=null)
 	{
-		if(empty($keyword)) return array();
+		if(empty($keyword) && empty($id)) return array();
 		
 		$this->db->select('`Offers`.`id`,
 						   `Offers`.`name` as `offer_name` ,

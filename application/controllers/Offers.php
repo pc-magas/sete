@@ -10,12 +10,12 @@ class Offers extends CI_Controller
 	
 	public function get()
 	{
-		$keyword=$this->input->get('keyword');
+		$keyword=$this->input->get('s');
 		$price=$this->input->get('price');
 		
 		$ret=$this->offers->get($keyword,$price);
 
-		$this->load->view('json_view.php',array('data'=>$ret));
+		$this->load->view('offers_view.php',array('data'=>$ret));
 	}
 	
 }
